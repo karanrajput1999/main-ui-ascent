@@ -59,6 +59,8 @@ const Speech = () => {
     alreadyExistsError,
   } = useSelector((state) => state.Speech);
 
+  console.log("SPEECHES GOES HERE ->", speeches);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -325,21 +327,9 @@ const Speech = () => {
                                 {speech.speechText ? (
                                   <div>{speech.speechText}</div>
                                 ) : null}
-                                {speech.speechAudioBlob ? (
+                                {speech.url ? (
                                   <audio controls>
-                                    <source
-                                      src={URL.createObjectURL(
-                                        new Blob(
-                                          [
-                                            convertDataURIToBinary(
-                                              `data:audio/wav;base64,${speech.speechAudioBlob}`
-                                            ),
-                                          ],
-                                          { type: "audio/wav" }
-                                        )
-                                      )}
-                                      type="audio/wav"
-                                    />
+                                    <source src={speech.url} type="audio/wav" />
                                     Your browser does not support the audio
                                     element.
                                   </audio>

@@ -299,13 +299,17 @@ export const createSpeech = ({
   speechAudioName,
   ivrCampaignId,
 }) => {
-  return api.create(`${process.env.REACT_APP_SERVER_URL}/speech/create`, {
-    title,
-    speechText,
-    speechAudio,
-    speechAudioName,
-    ivrCampaignId,
-  });
+  return api.create(
+    `${process.env.REACT_APP_SERVER_URL}/speech/create`,
+    {
+      title,
+      speechText,
+      speechAudio,
+      speechAudioName,
+      ivrCampaignId,
+    },
+    { "Content-Type": "multipart/form-data" }
+  );
 };
 export const updateSpeech = ({
   ivrCampaignId,
@@ -354,7 +358,6 @@ export const createDesign = (
   });
 };
 export const updateDesign = ({ designId, audioText }) => {
-  console.log("FRONTEND API CALL ->", designId, audioText);
   return api.update(
     `${process.env.REACT_APP_SERVER_URL}/ivr-design/${designId}/edit`,
     {

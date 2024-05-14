@@ -80,9 +80,10 @@ class APIClient {
     return axios.get(url, { withCredentials: true });
   };
 
-  create = (url, data) => {
+  create = (url, data, headers) => {
     return axios.post(url, data, {
       withCredentials: true,
+      headers: headers,
       // headers: {
       //   "Content-Type": "multipart/form-data",
       // },
@@ -91,9 +92,10 @@ class APIClient {
   /**
    * Updates data
    */
-  update = (url, data) => {
+  update = (url, data, headers) => {
     return axios.patch(url, data, {
       withCredentials: true,
+      headers: headers,
       // headers: {
       //   "Content-Type": "multipart/form-data",
       // },
